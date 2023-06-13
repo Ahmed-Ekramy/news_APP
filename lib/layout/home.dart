@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news/sherad/network/remote/api_manager.dart';
@@ -14,6 +12,13 @@ class Home_screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("News App"),
+        backgroundColor: Colors.green,
+        shape: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.transparent),
+          borderRadius: BorderRadius.horizontal(
+              right: Radius.circular(20), left: Radius.circular(20)),
+        ),
+        elevation: 0,
       ),
       body: FutureBuilder(
         future: ApiMngment.getSources(),
@@ -29,18 +34,17 @@ class Home_screen extends StatelessWidget {
               ],
             );
           }
-          if (snapshot.data?.status!= "ok"){
+          if (snapshot.data?.status != "ok") {
             print(snapshot.data?.status);
             return Column(
               children: [
-
                 Text("Erorr!!"),
                 TextButton(onPressed: () {}, child: Text("Try Agin"))
               ],
             );
           }
-          var sources = snapshot.data?.sources?? [];
-          return tabsScreen();
+          var sources = snapshot.data?.sources ?? [];
+          return tabsScreen(sources);
         },
       ),
     );
