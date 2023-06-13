@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news/sherad/network/remote/api_manager.dart';
 
+import '../Screens/tabs.dart';
+
 class Home_screen extends StatelessWidget {
   static const String routeName = "Home screen";
 
@@ -38,9 +40,7 @@ class Home_screen extends StatelessWidget {
             );
           }
           var sources = snapshot.data?.sources?? [];
-          return ListView.builder(itemBuilder: (context, index) {
-            return Text(sources[index].name ?? "");
-          },itemCount: sources.length,);
+          return tabsScreen();
         },
       ),
     );
