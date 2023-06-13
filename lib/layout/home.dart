@@ -12,6 +12,7 @@ class Home_screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("News App"),
+        centerTitle: true,
         backgroundColor: Colors.green,
         shape: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),
