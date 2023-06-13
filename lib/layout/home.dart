@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news/sherad/network/remote/api_manager.dart';
 
+import '../Screens/drawer.dart';
 import '../Screens/tabs.dart';
 
 class Home_screen extends StatelessWidget {
@@ -10,6 +11,7 @@ class Home_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerWidget(),
       appBar: AppBar(
         title: Text("News App"),
         centerTitle: true,
