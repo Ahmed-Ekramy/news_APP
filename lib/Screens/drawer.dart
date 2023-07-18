@@ -2,7 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {
-  const DrawerWidget({super.key});
+Function onDrawerClick;
+
+DrawerWidget(this.onDrawerClick);
+static int category=1;
+static int setting=2;
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,25 +24,35 @@ class DrawerWidget extends StatelessWidget {
               child: Text("News App!",style: TextStyle(fontSize: 24),),
            ),
           SizedBox(height: 20,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Icon(Icons.list_outlined,size: 30,),
-                SizedBox(width: 20,),
-                Text("Categories",style: TextStyle(fontSize: 24),),
-              ],
+          InkWell(
+            onTap: (){
+              onDrawerClick(category);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Icon(Icons.list_outlined,size: 30,),
+                  SizedBox(width: 20,),
+                  Text("Categories",style: TextStyle(fontSize: 24),),
+                ],
+              ),
             ),
           ),
           SizedBox(height: 20,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Icon(Icons.settings,size: 30,),
-                SizedBox(width: 20,),
-                Text("Settings",style: TextStyle(fontSize: 24),),
-              ],
+          InkWell(
+            onTap: (){
+              onDrawerClick(setting);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Icon(Icons.settings,size: 30,),
+                  SizedBox(width: 20,),
+                  Text("Settings",style: TextStyle(fontSize: 24),),
+                ],
+              ),
             ),
           ),
 
