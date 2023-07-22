@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news/Screens/widget/newsItem.dart';
@@ -8,8 +7,8 @@ import '../model/Sourse respons.dart';
 
 class tabsScreen extends StatefulWidget {
   List<Sources> sources;
-
-  tabsScreen(this.sources);
+String query;
+  tabsScreen(this.sources,this.query, {super.key});
 
   @override
   State<tabsScreen> createState() => _tabsScreenState();
@@ -41,7 +40,8 @@ class _tabsScreenState extends State<tabsScreen> {
               )),
         ),
         FutureBuilder(
-          future: ApiMngment.getData(widget.sources[selectedInex].id?? ""),
+          future: ApiMngment.getData(
+              sourceId: widget.sources[selectedInex].id ?? "",q:widget.query),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return CircularProgressIndicator();
@@ -65,9 +65,12 @@ class _tabsScreenState extends State<tabsScreen> {
             }
             var news = snapshot.data?.articles ?? [];
             return Expanded(
-              child: ListView.builder( itemBuilder: (context, index) {
-                return NewsItems(news[index]);
-              },itemCount: news.length,),
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return NewsItems(news[index]);
+                },
+                itemCount: news.length,
+              ),
             );
           },
         )

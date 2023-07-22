@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:news/sherad/network/remote/api_manager.dart';
 
-import 'Screens/tabs.dart';
-import 'model/categoryModel.dart';
+import '../Screens/tabs.dart';
+import '../model/categoryModel.dart';
 
 class NewsScreen extends StatelessWidget {
   CategoryModel categoryModel;
-
-  NewsScreen(this.categoryModel);
+  String query;
+  static const String routeName = "NewsScreen";
+  NewsScreen(this.categoryModel,this.query);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class NewsScreen extends StatelessWidget {
           );
         }
         var sources = snapshot.data?.sources ?? [];
-        return tabsScreen(sources);
+        return tabsScreen(sources,query);
       },
     );
   }

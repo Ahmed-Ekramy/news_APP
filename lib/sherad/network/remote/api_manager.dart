@@ -15,8 +15,8 @@ class ApiMngment {
     SourcesRespons sourcesRespons=SourcesRespons.fromJson(JasonRespons);
     return sourcesRespons;
   }
- static Future<NewsModel> getData(String? sourceId) async {
-    Uri URL=Uri.https(BASE,"/v2/everything",{"apiKey":ApiKey,"sources":sourceId});
+ static Future<NewsModel> getData ({String? sourceId, String? q}) async {
+    Uri URL=Uri.https(BASE,"/v2/everything",{"apiKey":ApiKey,"sources":sourceId,"q":q});
     Response response= await http.get(URL);
     var  json=jsonDecode(response.body);
     NewsModel newsModel=NewsModel.fromJson(json);
