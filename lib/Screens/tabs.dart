@@ -1,9 +1,10 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:news/Screens/widget/newsItem.dart';
+import 'package:news/Screens/widget/tab_item.dart';
 import 'package:news/sherad/network/remote/api_manager.dart';
-
 import '../model/Sourse respons.dart';
-import '../widget/tab_item.dart';
 
 class tabsScreen extends StatefulWidget {
   List<Sources> sources;
@@ -65,7 +66,7 @@ class _tabsScreenState extends State<tabsScreen> {
             var news = snapshot.data?.articles ?? [];
             return Expanded(
               child: ListView.builder( itemBuilder: (context, index) {
-                return Text(news[index].title??"");
+                return NewsItems(news[index]);
               },itemCount: news.length,),
             );
           },
