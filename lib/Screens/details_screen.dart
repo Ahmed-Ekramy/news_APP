@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:news/Screens/web_view_screen.dart';
 import 'package:news/model/NewsModel.dart';
 
-import '../home/news_screen.dart';
 
 class DetailsScreen extends StatelessWidget {
   static const String routeName = "DetailsScreen";
