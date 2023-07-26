@@ -16,10 +16,10 @@ class HomeCubit extends Cubit<HomeState> {
 
   static HomeCubit get(context) => BlocProvider.of(context);
   List<Sources> sources = [];
-List<Articles> news = [];
+  List<Articles> news = [];
   int selectedInex = 0;
   String? query;
-  CategoryModel? categoryModel = null;
+  CategoryModel? categoryModel;
   bool isSearch = false;
   void changeSource(int index){
     selectedInex=index;
@@ -41,13 +41,13 @@ List<Articles> news = [];
 
   Future<void> getData({ String? q}) async {
     Uri URL = Uri.https(BASE, "/v2/everything",
-        {"apiKey": ApiKey, "sources": sources[selectedInex].id, "q": q});
+        {"apiKey": ApiKey, "sources": sources[selectedInex].id  , "q": q});
     emit(HomeGetNewsLoadingState());
     http.get(URL).then((value) {
       var json = jsonDecode(value.body);
       print(value.body);
       NewsModel newsModel = NewsModel.fromJson(json);
-      news =newsModel.articles ?? [];
+      news =newsModel.articles ?? [] ;
       emit(HomeGetNewsSuccessState());
     }).catchError((error){
       emit(HomeGetNewsErrorState(error));

@@ -1,10 +1,13 @@
+import 'dart:html';
+
 abstract class HomeState {}
 
 class HomeInitState extends HomeState {}
 class HomeChangeSource extends HomeState {}
 
 class HomeGetSourceLoadingState extends HomeState {}
-class HomeOnDrawerClickState extends HomeState {}
+class HomeOnDrawerClickState extends HomeState {
+}
 class HomeOnCategorySelectState extends HomeState {}
 class HomeOnSearch extends HomeState {
 }
